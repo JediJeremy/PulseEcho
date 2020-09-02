@@ -1,7 +1,7 @@
 # PulseEcho
 Code and details to modify a HC-SR04 Ultrasonic 'time of flight' distance sensor to a 'signal over time' sonar sensor.
 
-![Assembled Module](/assembled 2.jpg)
+![Assembled Module](assembled 2.jpg)
 
 This is an overview of how to modify a common HC-SR04 Ultrasonic Sensor into a more capable "Sonar" module that will record an analog signal over time, rather than a digital time count to 'first reflection'. This allows multiple 'targets' to be detected, rather than just the closest.
 
@@ -12,8 +12,8 @@ The basic idea is to replace the on-board microcontroller and use the arduino to
 ## Parts
 You will need a HC-SR04 module and a 5V compatible Arduino based on the ATmega32U4, such as the Leonardo or the Micro. I used a SparkFun 'Pro Micro' due to its small form factor that could be directly mounted on the back of the ultrasonic sensor module. 
 
-![Parts](/parts 1.jpg)
-![Parts](/parts 2.jpg)
+![Parts](parts 1.jpg)
+![Parts](parts 2.jpg)
 
 Note that ATmega328P Arduinos like the UNO, or ARM-based boards will **NOT** work with the example code (which uses Timer4 on the 32U4 to generate the 40Hkz transmit signal in hardware), but there's no reason they can't work in theory; you'll just have to figure out a different way to generate the signal with sufficient accuracy. (note that using delay() calls is unlikely to get the precision needed)
 
@@ -21,7 +21,7 @@ Note that ATmega328P Arduinos like the UNO, or ARM-based boards will **NOT** wor
 
 The schematic for the modified module is shown below. The existing connector is used for power (+5V and GND) as normal. The 'Echo' pin is repurposed as the analog signal input, the 'Trigger' pin is used as the power enable for the MAX232, and two extra wires are added to drive the ultrasonic transmitter 'speaker'. 
 
-![Modified Schematic](/HC-SR02 schematic.jpg)
+![Modified Schematic](HC-SR02 schematic.jpg)
 
 The following modifications are made:
 * The microcontroller chip is removed.
@@ -30,8 +30,8 @@ The following modifications are made:
 * Two long wires are soldered to the 'TX1' and 'TX2' microcontroller pads.
 * The resistor that connects the '40Khz filter' stage to the 'Schmitt Trigger' stage of the analog reciever is removed, and the signal is re-routed to the 'Echo' pin by wiring it to the connected pad of the microcontroller.
 
-![Modified Module](/modified 1.jpg)
-![Modified Module](/modified 1.jpg)
+![Modified Module](modified 1.jpg)
+![Modified Module](modified 1.jpg)
 
 ## Arduino Wiring
 The example code uses the following Arduino pin assignments:
@@ -73,7 +73,7 @@ The purpose of the final two stages is to condition the analog echo signal into 
 It might be possible to avoid having to remove the microcontroller on the module (and having to generate the trasmit pulses ourselves) by simply tapping this one signal. However we would lose some control over the course of events; for example our ADC readings could be affected by the 'threshold' signal in unknown ways, and the module's microcontroller imposes timing limitations we want to ignore.
 
 
-![Assembled Module](/assembled 1.jpg)
+![Assembled Module](assembled 1.jpg)
 
 ## Arduino Code
 The example code has a ping() routine which performs the above operations to transmit an ultrasonic pulse, and a sample() routine which fills an array with analog readings taken over a short period of time after the pulse is sent.

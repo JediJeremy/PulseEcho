@@ -20,7 +20,7 @@ Note that ATmega328P Arduinos like the UNO, or ARM-based boards will **NOT** wor
 
 The schematic for the modified module is shown below. The existing connector is used for power (+5V and GND) as normal. The 'Echo' pin is repurposed as the analog signal input, the 'Trigger' pin is used as the power enable for the MAX232, and two extra wires are added to drive the ultrasonic transmitter 'speaker'. 
 
-![Modified Schematic](HCSR02_schematic.jpg)
+![Modified Schematic](HCSR04_schematic.jpg)
 
 The following modifications are made:
 * The microcontroller chip is removed.

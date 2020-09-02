@@ -35,10 +35,10 @@ The following modifications are made:
 ## Arduino Wiring
 The example code uses the following Arduino pin assignments:
 
-Pin 9:  TX1
-Pin 10: TX2
-Pin A3: Trigger/HVOff
-Pin A2: Echo
+* Pin 9:  TX1
+* Pin 10: TX2
+* Pin A3: Trigger/HVOff
+* Pin A2: Echo
 
 Note that pins 9 & 10 are dedicated to the Timer4 hardware module used to generate the transmit signal, and can not be reassigned without major changes to the code. 
 
